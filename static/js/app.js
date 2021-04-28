@@ -1,6 +1,38 @@
 console.log("Loading app.js....my code here!")
 
 
+//Draw Bar Graph 
+function drawBarGraph(sampleId) {
+    console.log(`drawBarGraph(${sampleId})`);
+
+}
+
+// Draw Bubble Chart
+function drawBubbleChar(sampleId) {
+    console.log(`drawbubblechar(${sampleId})`);
+}
+
+// Show Meta Data
+function showMetaData(sampleId) {
+    console.log(`showMetaData(${sampleId})`);
+}
+
+// Draw Gague - bonus
+// function drawGague(sampleId) {
+//     console.log(`showMetaData(${sampleId})`);
+// }
+
+// Event handler
+function optionChanged(newSampleId) {
+    console.log(`User selected ${newSampleId}`);
+
+    drawBarGraph(newSampleId);
+    drawBubbleChar(newSampleId);
+    showMetaData(newSampleId);
+
+
+}
+
 // This code comes from Dom's office hour examples 
 function InitDashboard() {
     console.log("InitDashboard()");
@@ -20,6 +52,21 @@ function InitDashboard() {
 
 
         });
+
+        var id = sampleNames[0];
+
+        drawBarGraph(id);
+        drawBubbleChar(id);
+        showMetaData(id);
+
+        //bonus chart
+        // drawGague(id);
+
+
+
+
+
+
     });
 
     // update the bar graph
