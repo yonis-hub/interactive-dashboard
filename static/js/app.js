@@ -5,6 +5,15 @@ console.log("Loading app.js....my code here!")
 function drawBarGraph(sampleId) {
     console.log(`drawBarGraph(${sampleId})`);
 
+    d3.json("data/samples.json").then(function(data){
+        // console.log(data);
+
+        var samples = data.samples;
+        var resultArray = samples.filter(sample => sample.id == sampleId);
+        // console.log(resultArray);
+        var result = resultArray[0]; /// VIDEO 59:01 left off
+    });
+
 }
 
 // Draw Bubble Chart
@@ -44,7 +53,7 @@ function InitDashboard() {
         console.log(data);
 
         var sampleNames = data.names;
-
+        //loop for the sample name drop down manu
         sampleNames.forEach(sampleId => {
             selector.append("option")
             .text(sampleId)
@@ -55,6 +64,7 @@ function InitDashboard() {
 
         var id = sampleNames[0];
 
+        //Draw the graphs and the metadata
         drawBarGraph(id);
         drawBubbleChar(id);
         showMetaData(id);
@@ -69,12 +79,7 @@ function InitDashboard() {
 
     });
 
-    // update the bar graph
-
-    //update the bubblechart
-
-
-    //update the demographic info
+   
 
 }
 
