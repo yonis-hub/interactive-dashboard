@@ -48,6 +48,40 @@ function drawBarGraph(sampleId) {
 // Draw Bubble Chart
 function drawBubbleChar(sampleId) {
     console.log(`drawbubblechar(${sampleId})`);
+
+    d3.json("data/samples.json").then(data => {
+
+        var samples = data.samples;
+        var resultArray = samples.filter(s => s.id == sampleId);
+        var result = resultArray[0];
+
+        var otu_ids = result.otu_ids;
+        var otu_labels = result.otu_labels;
+        var sample_values = result.sample_values;
+
+        var bubbleData = {
+            x: otu_ids,
+            y: sample_values,
+            text: otu_labels,
+            mode: "markers",
+            marker : {
+                size: sample_values,
+                color: otu_ids
+            }
+        };
+
+        var bubbleArray = [bubbleData];
+
+
+        var bubbleLayout = {
+            title: "Sample Values vs OTU Ids",
+            xaxis: { title: "OTU ID"},
+            yaxis: { title: "Sample Value"}
+        }
+
+        Plotly.newPlot("bubble", bubbleArray, bubbleLayout);
+
+    });
 }
 
 // Show Meta Data
