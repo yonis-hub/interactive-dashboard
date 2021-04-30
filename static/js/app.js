@@ -87,7 +87,34 @@ function drawBubbleChar(sampleId) {
 // Show Meta Data
 function showMetaData(sampleId) {
     console.log(`showMetaData(${sampleId})`);
-}
+    
+    d3.json("data/samples.json").then(data => {
+
+        var metadata = data.metadata;
+        var metaArray = metadata.filter (m => m.id == sampleId);
+        var meta = metaArray[0];
+
+        var meta_id = meta.id;
+        var meta_ethnicity = meta.ethnicity;
+        var meta_gender = meta.gender;
+        var meta_age = meta.age;
+        var meta_location = meta.location;
+        var meta_bbtype = meta.bbtype;
+        var meta_wfreq = meta.wfreq;
+
+        var select = d3.select("#sample-metadata")
+
+        select.html("");
+
+        select.append('ul').text(`id: ${meta_id}`);
+        select.append('ul').text(`ethnicity: ${meta_ethnicity}`);
+        select.append('ul').text(`gender: ${meta_gender}`);
+        select.append('ul').text(`age: ${meta_age}`);
+        select.append('ul').text(`location: ${meta_location}`);
+        select.append('ul').text(`bbtype: ${meta_bbtype}`);
+        select.append('ul').text(`wfreq: ${meta_wfreq}`);
+    });
+};
 
 // Draw Gague - bonus
 // function drawGague(sampleId) {
