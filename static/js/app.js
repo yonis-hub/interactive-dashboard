@@ -3,7 +3,7 @@ console.log("Loading app.js....my code here!")
 
 //Draw Bar Graph 
 function drawBarGraph(sampleId) {
-    console.log(`drawBarGraph(${sampleId})`);
+    // console.log(`drawBarGraph(${sampleId})`);
 
     d3.json("data/samples.json").then(function(data){
         // console.log(data);
@@ -47,7 +47,7 @@ function drawBarGraph(sampleId) {
 
 // Draw Bubble Chart
 function drawBubbleChar(sampleId) {
-    console.log(`drawbubblechar(${sampleId})`);
+    // console.log(`drawbubblechar(${sampleId})`);
 
     d3.json("data/samples.json").then(data => {
 
@@ -86,8 +86,8 @@ function drawBubbleChar(sampleId) {
 
 // Show Meta Data
 function showMetaData(sampleId) {
-    console.log(`showMetaData(${sampleId})`);
-    
+    // console.log(`showMetaData(${sampleId})`);
+
     d3.json("data/samples.json").then(data => {
 
         var metadata = data.metadata;
@@ -117,13 +117,42 @@ function showMetaData(sampleId) {
 };
 
 // Draw Gague - bonus
-// function drawGague(sampleId) {
-//     console.log(`showMetaData(${sampleId})`);
-// }
+function drawGague(sampleId) {
+    // console.log(`showMetaData(${sampleId})`);
+
+    d3.json("data/samples.json").then(data => {
+
+        var metadata = data.metadata;
+        var metaArray = metadata.filter (m => m.id == sampleId);
+        var meta = metaArray[0];
+        
+        var meta_wfreq = meta.wfreq;
+
+        // console.log(`meta${meta_wfreq}`);
+
+        var data = [
+            {
+                domain: { x: [0, 1], y: [0, 1] },
+                value: meta_wfreq,
+                type: "indicator",
+                mode: "gauge+number"
+            }
+        ];
+        
+        var layout = { 
+            width: 600, 
+            height: 500, 
+            margin: { t: 0, b: 150, l:0 } };
+
+        Plotly.newPlot('gauge', data, layout);
+
+    });
+};
+
 
 // Event handler
 function optionChanged(newSampleId) {
-    console.log(`User selected ${newSampleId}`);
+    // console.log(`User selected ${newSampleId}`);
 
     drawBarGraph(newSampleId);
     drawBubbleChar(newSampleId);
@@ -134,13 +163,13 @@ function optionChanged(newSampleId) {
 
 // This code comes from Dom's office hour examples 
 function InitDashboard() {
-    console.log("InitDashboard()");
+    // console.log("InitDashboard()");
 
     //populate the dropdown manu
     var selector = d3.select("#selDataset");
 
     d3.json("data/samples.json").then(function(data){
-        console.log(data);
+        // console.log(data);
 
         var sampleNames = data.names;
         //loop for the sample name drop down manu
@@ -148,8 +177,6 @@ function InitDashboard() {
             selector.append("option")
             .text(sampleId)
             .property("value", sampleId);
-
-
         });
 
         var id = sampleNames[0];
@@ -163,13 +190,7 @@ function InitDashboard() {
         // drawGague(id);
 
 
-
-
-
-
     });
-
-   
 
 }
 
