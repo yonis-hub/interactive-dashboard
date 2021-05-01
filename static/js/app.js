@@ -157,6 +157,7 @@ function optionChanged(newSampleId) {
     drawBarGraph(newSampleId);
     drawBubbleChar(newSampleId);
     showMetaData(newSampleId);
+    drawGague(newSampleId);
 
 
 }
@@ -185,9 +186,8 @@ function InitDashboard() {
         drawBarGraph(id);
         drawBubbleChar(id);
         showMetaData(id);
-
-        //bonus chart
-        // drawGague(id);
+        // bonus chart
+        drawGague(id);
 
 
     });
