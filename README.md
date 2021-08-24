@@ -1,4 +1,4 @@
-# Plot.ly Homework - Belly Button Biodiversity
+Biodiversity Dashboard
 
 ## Step 1: Plotly
 
@@ -37,9 +37,5 @@
 
 Additionally, you are welcome to create any layout that you would like for your dashboard. An example dashboard is shown below:
 
-## Deployment
 
-* Deploy your app to GitHub Pages. Submit the links to your deployment and your GitHub repo.
-
-* Ensure your repository has regular commits (i.e. 20+ commits) and a thorough README.md file
 
